@@ -17,9 +17,9 @@ docker build:
 docker run:
   stage: Run image
   script:
-  - docker -rm vf student-list-api || echo "container already deleted"
+  - docker rm -vf student-list-api || echo "container already deleted"
   - docker run -d --name=student-list-api -p 5000:5000 sami/student-list-api:gitlab-ci
-  - docker cp ${PWD}/simple_api/student_age.json student-list-api-api:/data/student_age.json
+  - docker cp ${PWD}/simple_api/student_age.json student-list-api:/data/student_age.json
 
 docker test:
   stage: Test image
